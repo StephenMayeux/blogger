@@ -11,6 +11,6 @@ module ArticlesHelper
 
   # But for our shortcut, we need to add some permissions
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tag_list)
   end
 end
