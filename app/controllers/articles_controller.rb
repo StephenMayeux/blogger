@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include ArticlesHelper
 
   # we need to use instance variables to make it available to the view
   def index
@@ -13,10 +14,9 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # pass new instance a hash of attributes
   def create
-    @article = Article.new
-    @article.title = params[:article][:title]
-    @article.body = params[:article][:body]
+    @article = Article.new(article_params)
     @article.save
     redirect_to article_path(@article)
   end
