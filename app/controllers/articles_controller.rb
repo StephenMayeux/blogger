@@ -18,12 +18,14 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params) # from helper
     @article.save
+    flash.notice = "'#{@article.title}' was created!"
     redirect_to article_path(@article)
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
+    flash.notice = "'#{@article.title}' is gone forever!"
     redirect_to articles_path
   end
 
@@ -34,6 +36,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.update(article_params) # update() also saves
+    flash.notice = "'#{@article.title}' was updated!" # add flash to templates
     redirect_to article_path(@article)
   end
 
