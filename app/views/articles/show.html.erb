@@ -3,3 +3,4 @@
   <%= @article.body %>
 </p>
 <%= link_to "<< Back to Main Page", articles_path %>
+<%= link_to "Delete Article", article_path, method: :delete, data: {confirm: "Really delete?"} %>

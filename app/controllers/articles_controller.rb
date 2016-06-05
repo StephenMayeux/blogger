@@ -16,9 +16,15 @@ class ArticlesController < ApplicationController
 
   # pass new instance a hash of attributes
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params) # from helper
     @article.save
     redirect_to article_path(@article)
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path
   end
 
 end
